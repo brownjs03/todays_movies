@@ -1,5 +1,4 @@
 class TodaysMovies::CLI
-#test 
     def call
         puts "Today's movies are:"
         movies
