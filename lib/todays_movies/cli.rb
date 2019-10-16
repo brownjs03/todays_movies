@@ -8,9 +8,10 @@ class TodaysMovies::CLI
 
     def movies
         puts "Today's movies are:"
-       # @movies = TodaysMovies::Movies.playing_today
-        #@movies.each_with_index(1) do |movie, i|
-         #   puts "#{i}. #{movie.name}"
+        @movies = TodaysMovies::Movies.playing_today
+        @movies.each.with_index(1) do |movie, i|
+            puts "#{i}. #{movie.name}"
+        end
     end
 
     def user_request
@@ -18,10 +19,11 @@ class TodaysMovies::CLI
         while input != "exit"
             puts "Please select a movie for showtimes:"
             input = gets.strip
-            if input == "1"
-                puts "movie 1 stuff"
-            elsif input == "2"
-                puts "movie 2 stuff"
+            if input.to_i > 0
+                movie = @movies[input.to_i - 1]
+                puts "#{movie.name}"
+                puts "#{movie.showtimes}"
+                puts "#{movie.description}"
             elsif input == "return"
             movies
             end
